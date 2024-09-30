@@ -2,13 +2,13 @@ name: Testing
 
 on:
   push:
-    branches: ["main"]
+    # branches: ["main"]
     tags:
       - "v*"
-  # pull_request:
+  pull_request:
+    branches: [main]
   pull_request_target:
-    types:
-      - closed
+    types: [closed]
 
 jobs:
   test:
