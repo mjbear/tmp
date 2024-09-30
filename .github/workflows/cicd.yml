@@ -1,18 +1,18 @@
 name: Testing
 
 on:
-  push:
+  #push:
     # branches: ["main"]
-    tags:
-      - "v*"
+  #  tags:
+  #    - "v*"
   pull_request:
     branches: ["main"]
   #  types: ["closed"]
   pull_request_target:
     types: ["closed"]
   release:
-    # type: ["published"]
-    type: ["created"]
+    # types: ["published"]
+    types: ["created"]
 
 jobs:
   test:
@@ -41,6 +41,7 @@ jobs:
     needs:
       - test
       # - build
-    # if: github.event.event_name == "push" && action == "published"
+    # if: ${{ github.event_name == 'release' && github.event.action == 'published' }}
+    if: ${{ github.event_name == 'release' && github.event.action == 'created' }}
     steps:
     - run: echo "deploy job"
