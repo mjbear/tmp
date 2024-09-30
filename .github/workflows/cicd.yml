@@ -11,8 +11,8 @@ on:
   pull_request_target:
     types: ["closed"]
   release:
-    type: ["created"]
-    # type: ["published"]
+    # type: ["created"]
+    type: ["published"]
 
 jobs:
   test:
