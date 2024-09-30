@@ -11,8 +11,8 @@ on:
   pull_request_target:
     types: ["closed"]
   release:
-    types: ["published"]
-    # type: ["created"]
+    # types: ["published"]
+    types: ["created"]
 
 jobs:
   test:
@@ -41,7 +41,7 @@ jobs:
     needs:
       - test
       # - build
-    # if: ${{ github.event_name == 'release' && github.event.action == 'created' }}
-    if: ${{ github.event_name == 'release' && github.event.action == 'published' }}
+    # if: ${{ github.event_name == 'release' && github.event.action == 'published' }}
+    if: ${{ github.event_name == 'release' && github.event.action == 'created' }}
     steps:
     - run: echo "deploy job"
