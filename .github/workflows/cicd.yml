@@ -5,10 +5,8 @@ on:
     branches: ["main"]
     tags:
       - "v*"
-  pull_request:
-    types:
-      - closed
-  # pull_request_target:
+  # pull_request:
+  pull_request_target:
   #  types:
   #    - closed
 
