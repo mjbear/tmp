@@ -6,18 +6,27 @@ on:
     tags:
       - "v*"
   pull_request:
-    branches: [main]
-  #  types: [closed]
-  pull_request_target:
-    types: [closed]
+    branches: ["main"]
+  #  types: ["closed"]
+  # pull_request_target:
+  #  types: ["closed"]
+  release:
+    # type: ["published"]
+    type: ["created"]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    # fire on push, but NOT the push+merge since this will fire on close
-    # if: github.event.pull_request.merged != true
+    # amended the push conditions so this fires on tag push,
+    # but NOT the push+merge since this will fire on PR close
     steps:
     - run: echo "test job"
+
+    # gah, I don't like having to do this ... but at least it's a testing repo
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
 
   build:
     runs-on: ubuntu-latest
@@ -25,3 +34,13 @@ jobs:
     if: github.event.pull_request.merged == true
     steps:
     - run: echo "build job"
+
+  # technically this should be combined with build, this is a test
+  deploy:
+    runs-on: ubuntu-latest
+    needs:
+      - test
+      # - build
+    # if: github.event.event_name == "push" && action == "published"
+    steps:
+    - run: echo "deploy job"
