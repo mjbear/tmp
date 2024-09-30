@@ -6,15 +6,20 @@ on:
     tags:
       - "v*"
   pull_request:
-  pull_request_target:
-    types:
-      - closed
+  #  types:
+  #    - opened
+  #    - edited
+  #    - closed
+  #    - reopened
+  # pull_request_target:
+  #  types:
+  #    - closed
 
 jobs:
   test:
     runs-on: ubuntu-latest
     # fire on push, but NOT the push+merge since this will fire on close
-    if: github.event.pull_request.merged != true
+    # if: github.event.pull_request.merged != true
     steps:
     - run: echo "test job"
 
