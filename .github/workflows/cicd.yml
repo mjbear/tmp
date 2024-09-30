@@ -33,6 +33,6 @@ jobs:
     needs:
       - test
       - build
-    if: github.event_name == "release" && github.event.action == "published"
+    if: github.event_name == "push" && github.event.action == "published"
     steps:
     - run: echo "deploy job"
