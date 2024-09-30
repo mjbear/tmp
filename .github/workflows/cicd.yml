@@ -41,6 +41,6 @@ jobs:
     needs:
       - test
       # - build
-    if: ${{ github.event_name == "release" && github.event.action == "created" }}
+    if: ${{ github.event_name == 'release' && github.event.action == 'created' }}
     steps:
     - run: echo "deploy job"
