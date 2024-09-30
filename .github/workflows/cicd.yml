@@ -10,6 +10,7 @@ on:
       - opened
       - edited
       - closed
+      - reopened
   # pull_request_target:
   #  types:
   #    - closed
