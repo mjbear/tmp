@@ -28,11 +28,12 @@ jobs:
     steps:
     - run: echo "build job"
 
+  # technically this should be combined with build, this is a test
   deploy:
     runs-on: ubuntu-latest
     needs:
       - test
-      - build
+      # - build
     if: github.event_name == "push" && github.event.action == "published"
     steps:
     - run: echo "deploy job"
