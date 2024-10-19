@@ -7,3 +7,4 @@ testing GH actions
 * 5
 
 1. foo
+1. bar
