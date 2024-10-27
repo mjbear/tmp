@@ -36,6 +36,11 @@ jobs:
   markdown_lint:
     runs-on: ubuntu-latest
     steps:
+      # - name: Run mdl (modified)
+      #   uses: mjbear/mdl-action@specify_directory_old
+      #   with:
+      #     style_file: .mdl_style.rb
+      #     directory: tests
       - name: Run mdl
         uses: mjbear/mdl-action@specify_directory
         with:
