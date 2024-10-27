@@ -45,7 +45,7 @@ jobs:
       #     directory: tests
       - name: List files (debugging)
         shell: sh
-        run: ls -l
+        run: ls -la
       - name: Run mdl
         uses: mjbear/mdl-action@specify_directory
         with:
