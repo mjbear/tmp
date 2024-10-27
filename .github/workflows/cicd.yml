@@ -33,9 +33,20 @@ jobs:
           args: "format --check --diff"
           changed-files: "true"
 
+  markdown_lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run mdl
+        uses: mjbear/mdl-action@specify_directory
+        with:
+          style_file: .mdl_style.rb
+          directory: tests
+
   test:
     runs-on: ubuntu-latest
-    needs: ruff
+    needs:
+      - ruff
+      - markdown_lint
     # amended the push conditions so this fires on tag push,
     # but NOT the push+merge since this will fire on PR close
     steps:
