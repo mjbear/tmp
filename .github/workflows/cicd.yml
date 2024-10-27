@@ -42,7 +42,7 @@ jobs:
       #     style_file: .mdl_style.rb
       #     directory: tests
       - name: List files (debugging)
-        shell: bash
+        shell: sh
         run: ls -l
       - name: Run mdl
         uses: mjbear/mdl-action@specify_directory
