@@ -4,6 +4,7 @@ default: true
 config:
 
 globs:
-  - '*.{md,markdown}'
-  - 'tests/*/*.{md,markdown}'
+  - '**'
+  # - '*.{md,markdown}'
+  # - 'tests/*/*.{md,markdown}'
 ...
