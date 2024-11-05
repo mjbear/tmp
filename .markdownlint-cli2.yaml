@@ -4,12 +4,13 @@ default: true
 config:
 
 globs:
-  # - '*.{md,markdown}'
-  # - 'tests/*/*.{md,markdown}'
+  # scan what we know/want
+  - '*.{md,markdown}'
+  - 'tests/*/*.{md,markdown}'
 
-  # definitely don't want double asterisks
+  # definitely don't want double asterisks (all files, ugh)
   # - '**'
 
-  # all markdown files
-  - '**/*.{md,markdown}'
+  # all markdown files (too much)
+  # - '**/*.{md,markdown}'
 ...
