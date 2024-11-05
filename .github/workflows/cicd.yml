@@ -71,7 +71,8 @@ jobs:
       uses: DavidAnson/markdownlint-cli2-action@v17
       with:
         # globs: '*.md tests/*/*.md'
-        globs: 'tests/*/*.md'
+        # globs: 'tests/*/*.md'
+        globs: '*.{md,markdown}'
 
   test:
     runs-on: ubuntu-latest
