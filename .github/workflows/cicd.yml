@@ -55,9 +55,10 @@ jobs:
 
       - name: Run mdl-action on current dir (Ruby, bewuethr)
         uses: bewuethr/mdl-action@v1
-        with:
-          # style-file: .mdl_style.rb
-          directory: .
+        # with:
+        #   # style-file: .mdl_style.rb
+        #   # directory defaults to . (current dir)
+        #   directory: .
 
       - name: Run mdl-action on tests dir (Ruby, bewuethr)
         uses: bewuethr/mdl-action@v1
