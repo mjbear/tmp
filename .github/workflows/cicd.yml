@@ -38,19 +38,39 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      # - name: Run mdl (modified)
+
+      - name: List files (debugging)
+        shell: sh
+        run: ls -l
+      # - name: Run mdl (Ruby, style_file specified)
       #   uses: mjbear/mdl-action@specify_directory_old
       #   with:
       #     style_file: .mdl_style.rb
       #     directory: tests
-      - name: List files (debugging)
-        shell: sh
-        run: ls -l
-      - name: Run mdl
-        uses: mjbear/mdl-action@specify_directory
+      # - name: Run mdl-action (Ruby, style_file not specified)
+      #   uses: mjbear/mdl-action@specify_directory
+      #   with:
+      #     directory: tests
+      - name: Run mdl-action (Ruby, bewuethr)
+        uses: bewuethr/mdl-action@v1
         with:
-          style-file: .mdl_style.rb
+          # style-file: .mdl_style.rb
           directory: tests
+
+  mdlint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v4
+
+    - name: List files (debugging)
+      shell: sh
+      run: ls -l
+
+    - name: Run markdownlint-cli2
+      uses: DavidAnson/markdownlint-cli2-action@v17
+      with:
+        globs: '*.md tests/*/*.md'
 
   test:
     runs-on: ubuntu-latest
