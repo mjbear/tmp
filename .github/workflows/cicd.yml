@@ -42,6 +42,7 @@ jobs:
       - name: List files (debugging)
         shell: sh
         run: ls -l
+
       # - name: Run mdl (Ruby, style_file specified)
       #   uses: mjbear/mdl-action@specify_directory_old
       #   with:
@@ -51,10 +52,18 @@ jobs:
       #   uses: mjbear/mdl-action@specify_directory
       #   with:
       #     directory: tests
-      - name: Run mdl-action (Ruby, bewuethr)
+
+      - name: Run mdl-action on current dir (Ruby, bewuethr)
         uses: bewuethr/mdl-action@v1
         with:
           # style-file: .mdl_style.rb
+          directory: .
+
+      - name: Run mdl-action on tests dir (Ruby, bewuethr)
+        uses: bewuethr/mdl-action@v1
+        with:
+          # just an example with the style file enabled
+          style-file: .mdl_style.rb
           directory: tests
 
   mdlint:
@@ -69,9 +78,13 @@ jobs:
 
     - name: Run markdownlint-cli2
       uses: DavidAnson/markdownlint-cli2-action@v17
+      # file globbing configured in .markdownlint-cli2.yaml
+      #
       # with:
+        # bad, broke, doesn't work
         # globs: '*.md tests/*/*.md'
-        # globs: 'tests/*/*.md'
+        #
+        # globs: 'tests/*/*.{md,markdown}'
         # globs: '*.{md,markdown}'
 
   test:
