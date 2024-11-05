@@ -70,13 +70,15 @@ jobs:
     - name: Run markdownlint-cli2
       uses: DavidAnson/markdownlint-cli2-action@v17
       with:
-        globs: '*.md tests/*/*.md'
+        # globs: '*.md tests/*/*.md'
+        globs: 'tests/*/*.md'
 
   test:
     runs-on: ubuntu-latest
     needs:
       - ruff
       - markdown_lint
+      - mdlint
     # amended the push conditions so this fires on tag push,
     # but NOT the push+merge since this will fire on PR close
     steps:
