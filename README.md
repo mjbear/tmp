@@ -21,7 +21,8 @@ Is this super useful? Maybe, maybe not so much.
 * https://github.com/DavidAnson/markdownlint
     * Node.js (Javascript)
     * inspired by the Ruby one at the top
-    * Two CLIs, second of which from the same author https://github.com/DavidAnson/markdownlint-cli2
+    * Two CLIs, second of which from the same author
+      https://github.com/DavidAnson/markdownlint-cli2
     * GH Action: https://github.com/marketplace/actions/markdownlint-cli2-action
 * https://github.com/igorshubovych/markdownlint-cli
     * Node.js (Javascript)
@@ -38,7 +39,8 @@ Is this super useful? Maybe, maybe not so much.
 
 ## Python Linting and Formatting
 
-(At the moment) This is not an exhaustive list as there are other Python linters and formatters. (ex: flake8, pylint, pydocstyle, black)
+(At the moment) This is not an exhaustive list as there are other Python
+linters and formatters. (ex: flake8, pylint, pydocstyle, black)
 
 * https://github.com/astral-sh/ruff
     * Rust
