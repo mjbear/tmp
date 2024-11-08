@@ -9,8 +9,10 @@ Maybe it's temporary or maybe it's not. :laughing:
 Is this super useful? Maybe, maybe not so much.
 
 * https://github.com/replicatedhq/dockerfilelint
+   * Node.js (Javascript)
    * GH Action - https://github.com/marketplace/actions/docker-lint
 * https://github.com/hadolint/hadolint
+   * Haskell
    * GH Action - https://github.com/marketplace/actions/hadolint-action
 
 ## Markdown Linting
