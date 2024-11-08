@@ -4,6 +4,12 @@ This is essentially my testing and proving ground for GitHub Actions.
 
 Maybe it's temporary or maybe it's not. :laughing:
 
+<!---
+Pulled my self-written linting docs from
+https://github.com/hellt/markdown-footnote-sorter/issues/17#issuecomment-2403704794
+https://github.com/hellt/markdown-footnote-sorter/issues/17#issuecomment-2463479513
+--->
+
 ## Dockerfile Linting
 
 Is this super useful? Maybe, maybe not so much.
