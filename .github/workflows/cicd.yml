@@ -34,7 +34,7 @@ jobs:
           args: "format --check --diff"
           changed-files: "true"
 
-  markdown_lint:
+  markdownlint:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -68,7 +68,7 @@ jobs:
           style-file: .mdl_style.rb
           directory: tests
 
-  mdlint:
+  mdlint_cli2:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -130,8 +130,8 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - ruff
-      - markdown_lint
-      - mdlint
+      - markdownlint
+      - mdlint_cli2
       - yamllint
       # - dockerfilelint
       # - hadolint
