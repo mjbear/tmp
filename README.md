@@ -17,7 +17,7 @@ Is Dockerfile linting super useful? Maybe, maybe not so much.
 * <https://github.com/replicatedhq/dockerfilelint>
   * Node.js (Javascript)
   * GH Action - <https://github.com/marketplace/actions/docker-lint>
-* <https://github.com/hadolint/hadolint
+* <https://github.com/hadolint/hadolint>
   * Haskell
   * GH Action - <https://github.com/marketplace/actions/hadolint-action>
 
@@ -30,11 +30,11 @@ Is Dockerfile linting super useful? Maybe, maybe not so much.
   * Node.js (Javascript)
   * inspired by the Ruby one at the top
   * Two CLIs, second of which from the same author
-    1. https://github.com/igorshubovych/markdownlint-cli (as seen below)
-    1. https://github.com/DavidAnson/markdownlint-cli2
+    1. <https://github.com/igorshubovych/markdownlint-cli> (as seen below)
+    1. <https://github.com/DavidAnson/markdownlint-cli2>
       * plenty of flexibility with globbing
-      * :tada: [globbing can be added into the cli2 config file](https://github.com/DavidAnson/markdownlint-cli2/blob/main/test/markdownlint-cli2-yaml-example/.markdownlint-cli2.yaml#L24)! :tada:
-  * GH Action: https://github.com/marketplace/actions/markdownlint-cli2-action
+      * :tada: [globbing can be added into the cli2 config file](https://github.com/DavidAnson/markdownlint-cli2/blob/main/test/markdownlint-cli2-yaml-example/.markdownlint-cli2.yaml#L24)!
+  * GH Action: <https://github.com/marketplace/actions/markdownlint-cli2-action>
 * <https://github.com/igorshubovych/markdownlint-cli>
   * Node.js (Javascript)
   * this cli uses DavidAnson's project as the base
@@ -69,6 +69,7 @@ linters and formatters. (ex: flake8, pylint, pydocstyle, black)
 https://github.com/mattcone/markdown-guide/blob/master/_basic-syntax/horizontal-rules.md
 
 Horizontal rule
+
 ```markdown
 ***
 ---
@@ -78,7 +79,7 @@ ___
 
 ---
 
-# Testing
+## Test Content
 
 testing GH actions
 
