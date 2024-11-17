@@ -92,7 +92,6 @@ jobs:
         # yamllint enable
 
   remark-lint:
-    name: Run remark-lint
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
