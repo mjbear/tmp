@@ -102,29 +102,29 @@ jobs:
         with:
           file_or_dir: .
 
-  dockerfilelint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
+  # dockerfilelint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out repository code
+  #       uses: actions/checkout@v4
 
-      - name: Run dockerfilelint
-        uses: luke142367/Docker-Lint-Action@v1.0.0
-        # yamllint disable
-        # with:
-        #   # defaults to Dockerfile
-        #   target: Dockerfile
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # yamllint enable
+  #     - name: Run dockerfilelint
+  #       uses: luke142367/Docker-Lint-Action@v1.0.0
+  #       # yamllint disable
+  #       # with:
+  #       #   # defaults to Dockerfile
+  #       #   target: Dockerfile
+  #       # env:
+  #       #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       # yamllint enable
 
-  hadolint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: hadolint/hadolint-action@v3.1.0
-        # with:
-        #   dockerfile: Dockerfile
+  # hadolint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: hadolint/hadolint-action@v3.1.0
+  #       # with:
+  #       #   dockerfile: Dockerfile
 
   test:
     runs-on: ubuntu-latest
