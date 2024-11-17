@@ -1,3 +1,4 @@
+---
 name: Testing CI/CD with GitHub Actions
 
 on:
@@ -168,3 +169,4 @@ jobs:
       }}
     steps:
     - run: echo "deploy job"
+...
