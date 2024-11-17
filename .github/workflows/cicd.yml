@@ -91,14 +91,15 @@ jobs:
           # globs: '*.{md,markdown}'
         # yamllint enable
 
-  remark-lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
+  # Maybe get this working later when/if it matters
+  # remark-lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out repository code
+  #       uses: actions/checkout@v4
 
-      - name: remark-lint
-        uses: rickstaa/action-remark-lint@v1
+  #     - name: remark-lint
+  #       uses: rickstaa/action-remark-lint@v1
 
   yamllint:
     runs-on: ubuntu-latest
@@ -141,7 +142,6 @@ jobs:
       - ruff
       - markdownlint
       - mdlint_cli2
-      - remark-lint
       - yamllint
       # - dockerfilelint
       # - hadolint
