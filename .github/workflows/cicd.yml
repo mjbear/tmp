@@ -73,11 +73,11 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-  
+
       - name: List files (debugging)
         shell: sh
         run: ls -l
-  
+
       - name: Run markdownlint-cli2
         uses: DavidAnson/markdownlint-cli2-action@v17
         # file globbing configured in .markdownlint-cli2.yaml
@@ -117,10 +117,10 @@ jobs:
   hadolint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: hadolint/hadolint-action@v3.1.0
-      # with:
-      #   dockerfile: Dockerfile
+      - uses: actions/checkout@v3
+      - uses: hadolint/hadolint-action@v3.1.0
+        # with:
+        #   dockerfile: Dockerfile
 
   test:
     runs-on: ubuntu-latest
@@ -134,13 +134,13 @@ jobs:
     # amended the push conditions so this fires on tag push,
     # but NOT the push+merge since this will fire on PR close
     steps:
-    - run: echo "test job"
-
-    # gah, I don't like having to do this ... but at least it's a testing repo
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
+      - run: echo "test job"
+  
+      # gah, I don't like having to do this ... but at least it's a testing repo
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
 
   build:
     runs-on: ubuntu-latest
@@ -153,7 +153,7 @@ jobs:
       github.event_name == 'release'
       }}
     steps:
-    - run: echo "build job"
+      - run: echo "build job"
 
   # technically this should be combined with build, this is a test
   deploy:
@@ -170,5 +170,5 @@ jobs:
       github.event_name == 'release' && github.event.action == 'created'
       }}
     steps:
-    - run: echo "deploy job"
+      - run: echo "deploy job"
 ...
