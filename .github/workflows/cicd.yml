@@ -71,23 +71,23 @@ jobs:
   mdlint:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out repository code
-      uses: actions/checkout@v4
-
-    - name: List files (debugging)
-      shell: sh
-      run: ls -l
-
-    - name: Run markdownlint-cli2
-      uses: DavidAnson/markdownlint-cli2-action@v17
-      # file globbing configured in .markdownlint-cli2.yaml
-      #
-      # with:
-        # bad, broke, doesn't work
-        # globs: '*.md tests/*/*.md'
+      - name: Check out repository code
+        uses: actions/checkout@v4
+  
+      - name: List files (debugging)
+        shell: sh
+        run: ls -l
+  
+      - name: Run markdownlint-cli2
+        uses: DavidAnson/markdownlint-cli2-action@v17
+        # file globbing configured in .markdownlint-cli2.yaml
         #
-        # globs: 'tests/*/*.{md,markdown}'
-        # globs: '*.{md,markdown}'
+        # with:
+          # bad, broke, doesn't work
+          # globs: '*.md tests/*/*.md'
+          #
+          # globs: 'tests/*/*.{md,markdown}'
+          # globs: '*.{md,markdown}'
 
   yamllint:
     runs-on: ubuntu-latest
@@ -161,7 +161,9 @@ jobs:
     needs:
       - test
       - build
-    # if: ${{ github.event_name == 'release' && github.event.action == 'published' }}
+    # if: ${{
+    #     github.event_name == 'release' && github.event.action == 'published'
+    #     }}
     if: >-
       ${{
       github.triggering_actor == github.repository_owner ||
