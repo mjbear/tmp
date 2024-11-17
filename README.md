@@ -31,9 +31,13 @@ Is Dockerfile linting super useful? Maybe, maybe not so much.
   * inspired by the Ruby one at the top
   * Two CLIs, second of which from the same author
      1. <https://github.com/igorshubovych/markdownlint-cli> (as seen below)
-     1. <https://github.com/DavidAnson/markdownlint-cli2>
+     1. <https://github.com/DavidAnson/markdownlint-cli2>     
         * plenty of flexibility with globbing
         * :tada: [globbing can be added into the cli2 config file](https://github.com/DavidAnson/markdownlint-cli2/blob/main/test/markdownlint-cli2-yaml-example/.markdownlint-cli2.yaml#L24)!
+     <!--
+       Unordered items after ordered list items change the indenting (cli2)
+       https://github.com/DavidAnson/markdownlint/issues/137#issuecomment-406555185
+     -->
   * GH Action: <https://github.com/marketplace/actions/markdownlint-cli2-action>
 * <https://github.com/igorshubovych/markdownlint-cli>
   * Node.js (Javascript)
