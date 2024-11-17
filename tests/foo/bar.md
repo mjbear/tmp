@@ -1,6 +1,6 @@
-<https://github.com/markdownlint/markdownlint/issues/374>
+# header MD005
 
-# header
+<https://github.com/markdownlint/markdownlint/issues/374>
 
 - item 1.1
   - item 1.2
