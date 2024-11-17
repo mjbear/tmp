@@ -1,4 +1,4 @@
-https://github.com/markdownlint/markdownlint/issues/374
+<https://github.com/markdownlint/markdownlint/issues/374>
 
 # header
 
