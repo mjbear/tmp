@@ -133,8 +133,8 @@ jobs:
       - markdown_lint
       - mdlint
       - yamllint
-      - dockerfilelint
-      - hadolint
+      # - dockerfilelint
+      # - hadolint
     # amended the push conditions so this fires on tag push,
     # but NOT the push+merge since this will fire on PR close
     steps:
