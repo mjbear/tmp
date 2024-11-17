@@ -82,12 +82,14 @@ jobs:
         uses: DavidAnson/markdownlint-cli2-action@v17
         # file globbing configured in .markdownlint-cli2.yaml
         #
+        # yamllint disable
         # with:
           # bad, broke, doesn't work
           # globs: '*.md tests/*/*.md'
           #
           # globs: 'tests/*/*.{md,markdown}'
           # globs: '*.{md,markdown}'
+        # yamllint enable
 
   yamllint:
     runs-on: ubuntu-latest
@@ -108,11 +110,13 @@ jobs:
 
       - name: Run dockerfilelint
         uses: luke142367/Docker-Lint-Action@v1.0.0
+        # yamllint disable
         # with:
         #   # defaults to Dockerfile
         #   target: Dockerfile
         # env:
         #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # yamllint enable
 
   hadolint:
     runs-on: ubuntu-latest
@@ -135,7 +139,7 @@ jobs:
     # but NOT the push+merge since this will fire on PR close
     steps:
       - run: echo "test job"
-  
+
       # gah, I don't like having to do this ... but at least it's a testing repo
       - name: Dump GitHub context
         env:
