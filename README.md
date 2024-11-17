@@ -41,6 +41,9 @@ Is Dockerfile linting super useful? Maybe, maybe not so much.
   * Node.js (Javascript)
   * this cli uses DavidAnson's project as the base
   * GH Action: <https://github.com/marketplace/actions/markdown-linting-action>
+* <https://github.com/remarkjs/remark-lint>
+  * JavaScript
+  * GH Action <https://github.com/marketplace/actions/run-remark-lint>
 * <https://github.com/btford/write-good>
   * Node.js (Javascript)
   * not exactly a MD linter?
