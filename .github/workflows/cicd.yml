@@ -4,7 +4,8 @@ on:
   push:
     branches: ["main"]
     tags:
-      - "v*"
+#      - "v*"
+      - "*"
   pull_request:
     branches: ["main"]
   #  types: ["closed"]
@@ -123,15 +124,17 @@ jobs:
     needs: build
     permissions:
       contents: write
+    # https://github.com/orgs/community/discussions/25692#discussioncomment-3248761
+    # https://stackoverflow.com/a/58478262
     if: >-
       ${{
-      github.event_name == 'release' && github.event.action == 'created'
+      github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
       }}
     steps:
     - name: Check out repository code
       uses: actions/checkout@v4
 
-    - name: Release Reference or Tag Version
+    - name: Update pyproject.toml version to match tag
       env:
         VERSION: ${{ github.event.release.tag_name }}
 #           sed -ie '/version\s\+=/s/\([[:digit:]]\+\.\?\)\{3\}/'$VERSION'/g' pyproject.toml
