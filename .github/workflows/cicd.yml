@@ -127,8 +127,9 @@ jobs:
       github.event_name == 'release' && github.event.action == 'created'
       }}
     steps:
-    - name: Release or Tag
-      run: echo "Release or Tag is $GITHUB_REF"
+    - name: Release Reference or Tag Version
+      run: echo "Reference is $GITHUB_REF" \
+           echo "Tag is $github.event.release.tag_name"
 
   # technically this should be combined with build, this is a test
   deploy:
