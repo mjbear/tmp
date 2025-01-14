@@ -131,15 +131,17 @@ jobs:
 
     - name: Release Reference or Tag Version
       env:
-        VERSION: ${{github.event.release.tag_name}}
+        VERSION: ${{ github.event.release.tag_name }}
 #           sed -ie '/version\s\+=/s/\([[:digit:]]\+\.\?\)\{3\}/'$VERSION'/g' pyproject.toml
       run: |
            echo "Reference is $GITHUB_REF"
-           echo "Tag is $VERSION or ${{github.event.release.tag_name}}"
+           echo "Tag is $VERSION or ${{ github.event.release.tag_name }}"
            sed -ie '/version\s\+=/s/\([[:digit:]]\+\.\?\)\+/'$VERSION'/g' pyproject.toml
            git config --local user.name 'github-actions[bot]'
            git config --local user.email 'github-actions[bot]@users.noreply.github.com'
            git commit pyproject.toml -m 'Bump Poetry project version to match GitHub Release'
+           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+           git push origin main
 
   # technically this should be combined with build, this is a test
   deploy:
