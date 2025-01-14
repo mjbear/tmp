@@ -129,10 +129,11 @@ jobs:
     - name: Release Reference or Tag Version
       env:
         VERSION: ${{github.event.release.tag_name}}
-      run: echo "Reference is $GITHUB_REF"
+      run: |
+           echo "Reference is $GITHUB_REF"
            echo "Tag is $VERSION or ${{github.event.release.tag_name}}"
            sed -e '/version\s\+=/s/\([[:digit:]]\+\.\?\)\{3\}/'$VERSION'/g' pyproject.toml
-           # sed -e '/version\s\+=/s/\([[:digit:]]\+\.\?\)\+/'$VERSION'/g' pyproject.toml
+#           sed -e '/version\s\+=/s/\([[:digit:]]\+\.\?\)\+/'$VERSION'/g' pyproject.toml
 
   # technically this should be combined with build, this is a test
   deploy:
