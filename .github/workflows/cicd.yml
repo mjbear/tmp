@@ -136,11 +136,13 @@ jobs:
 
     - name: Update pyproject.toml version to match tag
       env:
-        VERSION: ${{ github.event.release.tag_name }}
+        # VERSION: ${{ github.event.release.tag_name }}
+        VERSION: ${{ github.ref }} | cut -d'/' -f3
 #           sed -ie '/version\s\+=/s/\([[:digit:]]\+\.\?\)\{3\}/'$VERSION'/g' pyproject.toml
       run: |
            echo "Reference is $GITHUB_REF"
-           echo "Tag is $VERSION or ${{ github.event.release.tag_name }}"
+           echo "Tag is ${{ github.event.release.tag_name }}"
+           echo "Version number is $VERSION"
            sed -ie '/version\s\+=/s/\([[:digit:]]\+\.\?\)\+/'$VERSION'/g' pyproject.toml
            git config --local user.name 'github-actions[bot]'
            git config --local user.email 'github-actions[bot]@users.noreply.github.com'
@@ -156,7 +158,6 @@ jobs:
     needs:
       - test
       - build
-      - version_bump
     # if: ${{ github.event_name == 'release' && github.event.action == 'published' }}
     if: >-
       ${{
