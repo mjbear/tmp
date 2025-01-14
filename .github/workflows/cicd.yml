@@ -143,6 +143,7 @@ jobs:
            git config --local user.email 'github-actions[bot]@users.noreply.github.com'
            git commit pyproject.toml -m 'Bump Poetry project version to match GitHub Release'
            git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+           git branch -v
            git push origin ${{ github.event.release.target_commitish }}
 #           git push origin HEAD:${{ github.event.release.target_commitish }}
 
