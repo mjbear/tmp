@@ -126,6 +126,9 @@ jobs:
       github.event_name == 'release' && github.event.action == 'created'
       }}
     steps:
+    - name: Check out repository code
+      uses: actions/checkout@v4
+
     - name: Release Reference or Tag Version
       env:
         VERSION: ${{github.event.release.tag_name}}
