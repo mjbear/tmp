@@ -123,7 +123,6 @@ jobs:
     needs: build
     if: >-
       ${{
-      github.triggering_actor == github.repository_owner ||
       github.event_name == 'release' && github.event.action == 'created'
       }}
     steps:
