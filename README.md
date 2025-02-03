@@ -13,4 +13,10 @@
 
 anyon_e RK3588 ARM custom [laptop](https://github.com/Hello9999901/laptop)
 
+## Markdown:
 [![Video](https://img.youtube.com/vi/fks3PBodyiE/default.jpg)](https://www.youtube.com/watch?v=fks3PBodyiE)
+
+## HTML Markup:
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=fks3PBodyiE" target="_blank">
+ <img src="http://img.youtube.com/vi/fks3PBodyiE/mqdefault.jpg" alt="Watch the video" width="240" height="180" border="10" />
+</a>
