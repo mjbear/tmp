@@ -96,6 +96,8 @@ jobs:
 
     - name: Link check action
       uses: adriancoman/link-checks-action@1.0.1
+      with:
+        file-to-check: README.md
 
     - name: Markdown-lint-check
       uses: gaurav-nelson/github-action-markdown-link-check@v1
