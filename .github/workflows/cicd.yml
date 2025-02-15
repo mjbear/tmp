@@ -133,8 +133,8 @@ jobs:
     - name: Link Checker (lychee)
       id: lychee
       uses: lycheeverse/lychee-action@v2
-      with:
-        fail: false
+      # with:
+      #  fail: false
 
   test:
     runs-on: ubuntu-latest
