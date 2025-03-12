@@ -1,4 +1,4 @@
-testing GH actions
+# testing GH actions
 
 * 1
 * 2
@@ -9,3 +9,5 @@ testing GH actions
 1. foo
 1. bar
 1. baz
+1. qux
+1. quux
