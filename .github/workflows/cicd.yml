@@ -16,7 +16,7 @@ on:
   schedule:
     # times are in UTC
     # only runs on default branch https://github.com/orgs/community/discussions/26374
-    - cron: "30 14 5 4 *"
+    - cron: "35 13 5 4 *"
 
 jobs:
   ruff:
