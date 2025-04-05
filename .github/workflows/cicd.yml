@@ -16,8 +16,9 @@ on:
   schedule:
     # times are in UTC
     # only runs on default branch https://github.com/orgs/community/discussions/26374
-    - cron: "06 14 5 4 *"
-    - cron: "9 14 5 4 *"
+    - cron: "03 15 5 4 *"
+    - cron: "22 14 5 4 *"
+    - cron: "34 14 5 4 *"
     # testing every 5 minutes, but intend to disable this after tests run
     # - cron: "*/5 * * * *"
 
