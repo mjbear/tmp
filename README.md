@@ -61,8 +61,8 @@ I'm more so after validating external hyperlinks as opposed to relative links.
 * [markdown-link-check](https://github.com/marketplace/actions/markdown-link-check)
    * deprecated? Readme refers to linkspector below
 * [action-linkspector](https://github.com/UmbrellaDocs/action-linkspector)
-* [lychee-action](https://github.com/lycheeverse/lychee-action)
-   * written in Rust
+* [lychee-action](https://github.com/lycheeverse/lychee-action) :star:
+   * written in Rust :zap:
 
 Time for a broken/invalid ~bare link~ ([no bare links says the MDLinter](https://github.com/clearly/broken))
 and an [invalid Markdown link](https://github.com/yeah/this/is/broken).
@@ -83,7 +83,7 @@ How about an [invalid website](https://gggithuuub.com) too?
         * :tada: [globbing can be added into the cli2 config file](https://github.com/DavidAnson/markdownlint-cli2/blob/main/test/markdownlint-cli2-yaml-example/.markdownlint-cli2.yaml#L24)!
         * :bulb: Handles [unordered after ordered list items differently](https://github.com/DavidAnson/markdownlint/issues/137#issuecomment-406555185)
           than the Ruby Markdown linter (tip, it's all about alignment!)
-  * GH Action: <https://github.com/marketplace/actions/markdownlint-cli2-action>
+  * GH Action: <https://github.com/marketplace/actions/markdownlint-cli2-action> :star:
 * <https://github.com/igorshubovych/markdownlint-cli>
   * Node.js (Javascript)
   * this cli uses DavidAnson's project as the base
@@ -105,14 +105,38 @@ How about an [invalid website](https://gggithuuub.com) too?
 (At the moment) This is not an exhaustive list as there are other Python
 linters and formatters. (ex: flake8, pylint, pydocstyle, black)
 
-* <https://github.com/astral-sh/ruff>
+* Bandit
+  * Security checking
+* Black
+* Flake8
+* Pycodestyle
+* Pylint
+* <https://github.com/astral-sh/ruff> :star:
   * Rust
   * extremely fast
   * can _lint and format_ based on the arguments passed to `ruff`
   * GH Action: <https://github.com/marketplace/actions/ruff-action>
 
+## Python Environment and Package Management
+
+[Package Management Tools](https://packaging.python.org/en/latest/guides/tool-recommendations/)
+
+### Virtual Environment
+
+  * venv (built-in)
+  * virtualenv
+
+### Package Managers
+
+ * pip
+ * pipx
+ * pipenv
+ * Poetry
+ * Rye
+ * uv
+
 ## YAML Linting
 
-* <https://github.com/adrienverge/yamllint>
+* <https://github.com/adrienverge/yamllint> :star:
   * Python
   * GH Action: <https://github.com/marketplace/actions/yaml-lint>
