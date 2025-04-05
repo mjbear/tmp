@@ -14,7 +14,8 @@ on:
     # types: ["published"]
     types: ["created"]
   schedule:
-    - cron: "15 09 5 4 *"
+    # times are in UTC
+    - cron: "17 14 5 4 *"
 
 jobs:
   ruff:
