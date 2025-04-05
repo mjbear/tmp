@@ -48,15 +48,16 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: List files (debugging)
-        shell: sh
-        run: ls -l
-
+      # - name: List files (debugging)
+      #   shell: sh
+      #   run: ls -la
+      #
       # - name: Run mdl (Ruby, style_file specified)
       #   uses: mjbear/mdl-action@specify_directory_old
       #   with:
       #     style_file: .mdl_style.rb
       #     directory: tests
+      #
       # - name: Run mdl-action (Ruby, style_file not specified)
       #   uses: mjbear/mdl-action@specify_directory
       #   with:
