@@ -1,6 +1,7 @@
+---
 name: Testing CI/CD with GitHub Actions
 
-on:
+on:  # yamllint disable-line rule:truthy
   push:
     branches: ["main"]
     tags:
@@ -42,7 +43,7 @@ jobs:
           args: "format --check --diff"
           changed-files: "true"
 
-  markdown_lint:
+  markdownlint:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -65,10 +66,10 @@ jobs:
 
       - name: Run mdl-action on current dir (Ruby, bewuethr)
         uses: bewuethr/mdl-action@v1
-        # with:
-        #   # style-file: .mdl_style.rb
-        #   # directory defaults to . (current dir)
-        #   directory: .
+        with:
+          style-file: .mdl_style.rb
+          # directory defaults to . (current dir)
+        #  directory: .
 
       - name: Run mdl-action on tests dir (Ruby, bewuethr)
         uses: bewuethr/mdl-action@v1
@@ -77,26 +78,73 @@ jobs:
           style-file: .mdl_style.rb
           directory: tests
 
-  mdlint:
+  mdlint_cli2:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out repository code
-      uses: actions/checkout@v4
+      - name: Check out repository code
+        uses: actions/checkout@v4
 
-    - name: List files (debugging)
-      shell: sh
-      run: ls -l
+      - name: List files (debugging)
+        shell: sh
+        run: ls -l
 
-    - name: Run markdownlint-cli2
-      uses: DavidAnson/markdownlint-cli2-action@v17
-      # file globbing configured in .markdownlint-cli2.yaml
-      #
-      # with:
-        # bad, broke, doesn't work
-        # globs: '*.md tests/*/*.md'
+      - name: Run markdownlint-cli2
+        uses: DavidAnson/markdownlint-cli2-action@v17
+        # file globbing configured in .markdownlint-cli2.yaml
         #
-        # globs: 'tests/*/*.{md,markdown}'
-        # globs: '*.{md,markdown}'
+        # yamllint disable
+        # with:
+          # bad, broke, doesn't work
+          # globs: '*.md tests/*/*.md'
+          #
+          # globs: 'tests/*/*.{md,markdown}'
+          # globs: '*.{md,markdown}'
+        # yamllint enable
+
+  # Maybe get this working later when/if it matters
+  # remark-lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out repository code
+  #       uses: actions/checkout@v4
+
+  #     - name: remark-lint
+  #       uses: rickstaa/action-remark-lint@v1
+
+  yamllint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Run yamllint
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: .
+
+  # dockerfilelint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out repository code
+  #       uses: actions/checkout@v4
+
+  #     - name: Run dockerfilelint
+  #       uses: luke142367/Docker-Lint-Action@v1.0.0
+  #       # yamllint disable
+  #       # with:
+  #       #   # defaults to Dockerfile
+  #       #   target: Dockerfile
+  #       # env:
+  #       #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       # yamllint enable
+
+  # hadolint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: hadolint/hadolint-action@v3.1.0
+  #       # with:
+  #       #   dockerfile: Dockerfile
 
   link_checks:
     runs-on: ubuntu-latest
@@ -150,8 +198,11 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - ruff
-      - markdown_lint
-      - mdlint
+      - markdownlint
+      - mdlint_cli2
+      - yamllint
+      # - dockerfilelint
+      # - hadolint
       - link_checks
       - markdown_link_check
       - linkspector
@@ -159,13 +210,13 @@ jobs:
     # amended the push conditions so this fires on tag push,
     # but NOT the push+merge since this will fire on PR close
     steps:
-    - run: echo "test job"
+      - run: echo "test job"
 
-    # gah, I don't like having to do this ... but at least it's a testing repo
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
+      # gah, I don't like having to do this ... but at least it's a testing repo
+      # - name: Dump GitHub context
+      #   env:
+      #     GITHUB_CONTEXT: ${{ toJson(github) }}
+      #   run: echo "$GITHUB_CONTEXT"
 
   build:
     runs-on: ubuntu-latest
@@ -178,7 +229,7 @@ jobs:
       github.event_name == 'release'
       }}
     steps:
-    - run: echo "build job"
+      - run: echo "build job"
 
   # technically this should be combined with build, this is a test
   deploy:
@@ -186,11 +237,14 @@ jobs:
     needs:
       - test
       - build
-    # if: ${{ github.event_name == 'release' && github.event.action == 'published' }}
+    # if: ${{
+    #     github.event_name == 'release' && github.event.action == 'published'
+    #     }}
     if: >-
       ${{
       github.triggering_actor == github.repository_owner ||
       github.event_name == 'release' && github.event.action == 'created'
       }}
     steps:
-    - run: echo "deploy job"
+      - run: echo "deploy job"
+...
