@@ -198,8 +198,8 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - ruff
-      - markdown_lint
-      - mdlint
+      - markdownlint
+      - mdlint_cli2
       - yamllint
       # - dockerfilelint
       # - hadolint
