@@ -2,4 +2,4 @@
 
 ## blah blah
 
-make mdl happy!
+Make mdl happy!
