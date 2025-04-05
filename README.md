@@ -4,8 +4,37 @@ This is essentially my testing and proving ground for GitHub Actions usage.
 
 Maybe it's temporary or maybe it's not. :laughing:
 
+## Test Content for Testing GitHub Actions
+
+* 1
+* 2
+* 3
+* 4
+* 5
+
+1. foo
+1. bar
+1. baz
+1. qux
+1. quux
+
 <!---
-Pulled my self-written linting docs from
+https://github.com/mattcone/markdown-guide/blob/master/_basic-syntax/horizontal-rules.md
+
+Horizontal rule
+
+```markdown
+***
+---
+___
+```
+
+--->
+
+---
+
+<!---
+Pulled some of my self-written linting docs from
 https://github.com/hellt/markdown-footnote-sorter/issues/17#issuecomment-2403704794
 https://github.com/hellt/markdown-footnote-sorter/issues/17#issuecomment-2463479513
 --->
@@ -20,6 +49,24 @@ Is Dockerfile linting super useful? Maybe, maybe not so much.
 * <https://github.com/hadolint/hadolint>
   * Haskell
   * GH Action - <https://github.com/marketplace/actions/hadolint-action>
+
+## Hyperlink / Link Checking
+
+Some actions only support HTML which isn't conducive for checking Markdown hyperlinks!
+
+I'm more so after validating external hyperlinks as opposed to relative links.
+
+* [link-check-action](https://github.com/marketplace/actions/link-check-action)
+   * requires statically defining file name
+* [markdown-link-check](https://github.com/marketplace/actions/markdown-link-check)
+   * deprecated? Readme refers to linkspector below
+* [action-linkspector](https://github.com/UmbrellaDocs/action-linkspector)
+* [lychee-action](https://github.com/lycheeverse/lychee-action)
+   * written in Rust
+
+Time for a broken/invalid ~bare link~ ([no bare links says the MDLinter](https://github.com/clearly/broken))
+and an [invalid Markdown link](https://github.com/yeah/this/is/broken).
+How about an [invalid website](https://gggithuuub.com) too?
 
 ## Markdown Linting
 
@@ -69,31 +116,3 @@ linters and formatters. (ex: flake8, pylint, pydocstyle, black)
 * <https://github.com/adrienverge/yamllint>
   * Python
   * GH Action: <https://github.com/marketplace/actions/yaml-lint>
-
-<!---
-https://github.com/mattcone/markdown-guide/blob/master/_basic-syntax/horizontal-rules.md
-
-Horizontal rule
-
-```markdown
-***
----
-___
-```
-
---->
-
----
-
-## Test Content
-
-testing GH actions
-
-* 1
-* 2
-* 3
-* 4
-* 5
-
-1. foo
-1. bar

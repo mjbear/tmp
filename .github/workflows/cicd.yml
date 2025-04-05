@@ -14,6 +14,15 @@ on:  # yamllint disable-line rule:truthy
   release:
     # types: ["published"]
     types: ["created"]
+  schedule:
+    # times are in UTC
+    # only runs on default branch https://github.com/orgs/community/discussions/26374
+    - cron: "02 16 5 4 *"
+    - cron: "9 16 5 4 *"
+    # - cron: "22 14 5 4 *"
+    # - cron: "34 14 5 4 *"
+    # testing every 5 minutes, but intend to disable this after tests run
+    # - cron: "*/5 * * * *"
 
 jobs:
   ruff:
@@ -40,15 +49,16 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: List files (debugging)
-        shell: sh
-        run: ls -l
-
+      # - name: List files (debugging)
+      #   shell: sh
+      #   run: ls -la
+      #
       # - name: Run mdl (Ruby, style_file specified)
       #   uses: mjbear/mdl-action@specify_directory_old
       #   with:
       #     style_file: .mdl_style.rb
       #     directory: tests
+      #
       # - name: Run mdl-action (Ruby, style_file not specified)
       #   uses: mjbear/mdl-action@specify_directory
       #   with:
@@ -136,25 +146,77 @@ jobs:
   #       # with:
   #       #   dockerfile: Dockerfile
 
+  link_checks:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v4
+
+    - name: Link check action
+      uses: adriancoman/link-checks-action@1.0.1
+      with:
+        file-to-check: README.md,tests/foo/foo.md
+        # comma separated list of files (better if it supported globbing!)
+
+  markdown_link_check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v4
+
+    - name: Markdown-lint-check
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      # uses tcort/markdown-link-check
+      # GH Action somewhat deprecated?
+
+  linkspector:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v4
+
+    - name: Run linkspector
+      uses: umbrelladocs/action-linkspector@v1
+      with:
+        github_token: ${{ secrets.github_token }}
+        reporter: github-pr-review
+        fail_level: any
+
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v4
+
+    - name: Link Checker (lychee)
+      id: lychee
+      uses: lycheeverse/lychee-action@v2
+      # with:
+      #  fail: false
+
   test:
     runs-on: ubuntu-latest
     needs:
       - ruff
-      - markdownlint
-      - mdlint_cli2
+      - markdown_lint
+      - mdlint
       - yamllint
       # - dockerfilelint
       # - hadolint
+      - link_checks
+      - markdown_link_check
+      - linkspector
+      - lychee
     # amended the push conditions so this fires on tag push,
     # but NOT the push+merge since this will fire on PR close
     steps:
       - run: echo "test job"
 
       # gah, I don't like having to do this ... but at least it's a testing repo
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+      # - name: Dump GitHub context
+      #   env:
+      #     GITHUB_CONTEXT: ${{ toJson(github) }}
+      #   run: echo "$GITHUB_CONTEXT"
 
   build:
     runs-on: ubuntu-latest
