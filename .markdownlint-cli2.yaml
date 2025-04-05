@@ -1,0 +1,16 @@
+---
+default: true
+
+config:
+
+globs:
+  # scan what we know/want
+  - '*.{md,markdown}'
+  - 'tests/*/*.{md,markdown}'
+
+  # definitely don't want double asterisks (all files, ugh)
+  # - '**'
+
+  # all markdown files (too much)
+  # - '**/*.{md,markdown}'
+...
