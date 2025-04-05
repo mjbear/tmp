@@ -1,0 +1,6 @@
+# test excluding some nonexistent links
+https://gggithuuub.com
+https://github.com/clearly
+
+# intentionally testing out the regexes
+https://github.com/yeah$
