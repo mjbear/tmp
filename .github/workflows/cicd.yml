@@ -13,6 +13,8 @@ on:
   release:
     # types: ["published"]
     types: ["created"]
+  schedule:
+    - cron: "15 09 5 4 *"
 
 jobs:
   ruff:
