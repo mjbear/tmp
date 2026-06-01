@@ -3,6 +3,7 @@ name: Testing CI/CD with GitHub Actions
 
 on:  # yamllint disable-line rule:truthy
   push:
+    paths-ignore: ["docs/ignore/**"]
     branches: ["main"]
     tags:
       - "v*"
