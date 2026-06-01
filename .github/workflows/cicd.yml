@@ -8,6 +8,7 @@ on:  # yamllint disable-line rule:truthy
     tags:
       - "v*"
   pull_request:
+    paths-ignore: ["docs/ignore/**"]
     branches: ["main"]
   #  types: ["closed"]
   pull_request_target:
