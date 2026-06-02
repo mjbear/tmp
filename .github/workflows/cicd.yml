@@ -1,6 +1,8 @@
 ---
 name: Testing CI/CD with GitHub Actions
 
+# Cancel concurrent workflows for the same branch/PR
+#
 # https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency#example-using-concurrency-and-the-default-behavior
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
