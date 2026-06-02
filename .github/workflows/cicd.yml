@@ -16,11 +16,14 @@ on:  # yamllint disable-line rule:truthy
   release:
     # types: ["published"]
     types: ["created"]
-  schedule:
+  # be careful with schedules - once they disable, they disable all workflows
+  # https://github.com/orgs/community/discussions/32197
+  # https://github.com/orgs/community/discussions/66834
+  #schedule:
     # times are in UTC
     # only runs on default branch https://github.com/orgs/community/discussions/26374
-    - cron: "02 16 5 4 *"
-    - cron: "9 16 5 4 *"
+    #- cron: "02 16 5 4 *"
+    #- cron: "9 16 5 4 *"
     # - cron: "22 14 5 4 *"
     # - cron: "34 14 5 4 *"
     # testing every 5 minutes, but intend to disable this after tests run
